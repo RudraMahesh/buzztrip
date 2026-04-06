@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>About Buzz Trip | Since 2015 — Travel Experts</title>
+  <!-- Bootstrap 5 + Icons + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== FLOATING CALL & WHATSAPP ===== */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      z-index: 9999;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* LEFT - CALL */
+    .call-btn {
+      left: 20px;
+      background: var(--ocean-blue);
+    }
+
+    /* RIGHT - WHATSAPP */
+    .whatsapp-btn {
+      right: 20px;
+      background: #25D366; /* official WhatsApp green */
+    }
+
+    :root {
+      --dark-blue: #083F85;
+      --ocean-blue: #0976C3;
+      --light-blue: #5193B6;
+      --sun-yellow: #FCD43C;
+      --soft-sky: #A5C7D6;
+      --white-bg: #FDFDFC;
+      --shadow-sm: 0 12px 28px rgba(8, 63, 133, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white-bg);
+      color: var(--dark-blue);
+      overflow-x: hidden;
+    }
+
+    /* LOGO */
+    .logo-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* TOP HEADER */
+    .top-header {
+      background-color: var(--dark-blue);
+      color: white;
+      font-size: 0.9rem;
+      padding: 8px 0;
+      position: relative;
+      z-index: 1030;
+    }
+    .top-header a {
+      color: var(--sun-yellow);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .top-header a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    .top-header .social-icons i {
+      font-size: 1rem;
+      margin-right: 6px;
+      color: var(--sun-yellow);
+    }
+    .top-header .contact-details span {
+      margin-right: 24px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+      padding: 12px 0;
+    }
+    .navbar-nav {
+      gap: 18px;
+    }
+    .nav-link {
+      padding: 8px 12px !important;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark-blue) !important;
+      transition: var(--transition);
+    }
+    .nav-link:hover, .dropdown-item:hover {
+      color: var(--ocean-blue) !important;
+    }
+    .btn-outline-special {
+      border: 2px solid var(--ocean-blue);
+      color: var(--ocean-blue);
+      border-radius: 40px;
+      font-weight: 600;
+      padding: 6px 20px;
+      transition: var(--transition);
+    }
+    .btn-outline-special:hover {
+      background-color: var(--ocean-blue);
+      color: white;
+    }
+
+    /* ABOUT HERO */
+    .about-hero {
+      background: linear-gradient(115deg, rgba(8,63,133,0.92) 0%, rgba(9,118,195,0.85) 100%), url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1600&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      padding: 100px 0;
+      position: relative;
+    }
+    .about-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+    }
+    .about-hero .breadcrumb-custom {
+      color: var(--sun-yellow);
+    }
+
+    /* section titles */
+    .section-title {
+      font-weight: 800;
+      font-size: 2.4rem;
+      color: var(--dark-blue);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--sun-yellow);
+      border-radius: 4px;
+    }
+    .dual-tag {
+      background: linear-gradient(120deg, var(--light-blue), var(--soft-sky));
+      border-radius: 60px;
+      padding: 4px 16px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    /* story card */
+    .story-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      height: 100%;
+      transition: var(--transition);
+    }
+    .story-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* stats */
+    .stat-bubble {
+      background: white;
+      border-radius: 40px;
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
+    }
+    .stat-number {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--dark-blue);
+      line-height: 1;
+    }
+
+    /* core values */
+    .value-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      height: 100%;
+    }
+    .value-card i {
+      font-size: 2.8rem;
+      color: var(--ocean-blue);
+      margin-bottom: 1rem;
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      border-bottom: 4px solid var(--sun-yellow);
+    }
+
+    /* team */
+    .team-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .team-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .team-card h5 {
+      font-weight: 800;
+      margin-top: 1rem;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* awards */
+    .award-badge {
+      background: #fff;
+      border-radius: 60px;
+      padding: 10px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      font-weight: 600;
+    }
+
+    /* footer */
+    .footer {
+      background-color: #083F85;
+      color: #eef2f8;
+    }
+    .footer a {
+      color: var(--soft-sky);
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--sun-yellow);
+    }
+    .btn-subscribe {
+      background: var(--sun-yellow);
+      color: var(--dark-blue);
+      font-weight: 700;
+      border-radius: 60px;
+      padding: 12px 30px;
+    }
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 2.4rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+      <!-- CALL BUTTON (LEFT) -->
+<a href="tel:+919217668273" class="floating-btn call-btn">
+ <i class="fa-solid fa-phone"></i>
+</a>
+
+<!-- WHATSAPP BUTTON (RIGHT) -->
+<a href="https://wa.me/919217668273" target="_blank" class="floating-btn whatsapp-btn">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- TOP HEADER (identical) -->
+<div class="top-header">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <div class="contact-details">
+        <span><i class="fas fa-phone-alt me-1"></i> +91 92176 68273</span>
+        <span><i class="fab fa-whatsapp me-1"></i> +91 92176 64273</span>
+      </div>
+      <div class="social-icons">
+        <a target="_blank" href="https://www.instagram.com/buzz_trips?igsh=ODFxdjBwcGpmdGhy" class="me-3"><i class="fab fa-instagram me-1"></i> buzz_trips</a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION (ABOUT LINK ACTIVE) -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logo.png" alt="Buzz Trip logo" class="logo-img" onerror="this.src='https://placehold.co/200x60?text=Buzz+Trip';">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="domestic.html">Domestic</a></li>
+        <li class="nav-item"><a class="nav-link active" href="international.html">International</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-outline-special ms-2" href="tel:+919217668273">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ABOUT HERO SECTION -->
+<section class="about-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center text-white">
+        <span class="dual-tag mb-3 d-inline-block" style="background: rgba(255,255,255,0.2); color:var(--sun-yellow);">✦ Since 2015 ✦</span>
+        <h1 class="fw-bold mt-3"><br>About Us</h1>
+        <p class="lead mt-3 opacity-90">India’s most loved travel partner — from snow-capped mountains to turquoise beaches, we make every trip extraordinary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY + MISSION -->
+<div class="container my-5 py-4">
+  <div class="row g-5 align-items-center">
+    <div class="col-md-6">
+      <div class="story-card">
+        <i class="fas fa-quote-left fa-2x" style="color:var(--sun-yellow); opacity:0.6;"></i>
+        <h3 class="fw-bold mt-2">Our Story</h3>
+        <p class="text-muted">Buzz Trip started in 2015 with a simple idea: travel should be effortless, authentic, and joyful. What began as a small group of passionate explorers has now grown into a trusted travel network serving thousands of happy travelers across India & worldwide. We believe that every journey tells a story, and our mission is to write beautiful chapters for each wanderer.</p>
+        <p class="text-muted">Over the years we've curated exclusive honeymoon getaways, adventure treks, corporate retreats, and luxury escapes — all backed by 24/7 on-ground support and transparent pricing.</p>
+        <div class="mt-3"><span class="badge bg-light text-dark p-2 me-2"><i class="fas fa-smile-wink"></i> 10K+ happy souls</span> <span class="badge bg-light text-dark p-2"><i class="fas fa-map-marked-alt"></i> 50+ dream destinations</span></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="story-card" style="background: linear-gradient(145deg, #f1f9ff, white);">
+        <i class="fas fa-bullseye fa-2x" style="color:var(--ocean-blue);"></i>
+        <h3 class="fw-bold mt-2">Our Mission & Vision</h3>
+        <p class="text-muted"><strong>Mission:</strong> To deliver seamless, immersive travel experiences with personal care, ensuring every traveler returns with a heart full of memories and a desire to explore more.</p>
+        <p class="text-muted"><strong>Vision:</strong> Become the most customer-centric travel ecosystem, bridging cultures and creating sustainable tourism while empowering local communities.</p>
+        <hr>
+        <div class="row mt-2">
+          <div class="col-6"><i class="fas fa-handshake text-primary"></i> 100% transparency</div>
+          <div class="col-6"><i class="fas fa-globe-asia text-primary"></i> Responsible tourism</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS SECTION (IMPACT) -->
+<div class="container my-5">
+  <div class="text-center mb-5">
+    <div>
+        <span class="dual-tag"><i class="fas fa-chart-simple"></i> Buzz by Numbers</span>
+    </div>
+    <h2 class="section-title mt-3">Our Impact In Numbers</h2>
+  </div>
+  <div class="row g-4 text-center">
+    <div class="col-md-3 col-6">
+      <div class="stat-bubble"><div class="stat-number">10,000+</div><p class="fw-bold mb-0">Happy Travelers</p><small class="text-muted">and counting</small></div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="stat-bubble"><div class="stat-number">50+</div><p class="fw-bold mb-0">Destinations</p><small class="text-muted">domestic & global</small></div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="stat-bubble"><div class="stat-number">4.1 ★</div><p class="fw-bold mb-0">Customer Rating</p><small class="text-muted">Google & Trustpilot</small></div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="stat-bubble"><div class="stat-number">250+</div><p class="fw-bold mb-0">Expert Partners</p><small class="text-muted">hotels, guides, airlines</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- CORE VALUES SECTION -->
+<div class="container my-5 py-3">
+  <div class="text-center mb-5">
+    <div>
+        <span class="dual-tag"><i class="fas fa-gem"></i> What Drives Us</span>
+    </div>
+    <h2 class="section-title mt-3">Our Core Values</h2>
+    <p class="text-muted">The foundation of every Buzz Trip experience</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-3 col-sm-6">
+      <div class="value-card"><i class="fas fa-heart"></i><h5 class="fw-bold">Customer First</h5><p class="text-muted small">Your happiness is our priority. We go the extra mile to craft tailor-made holidays.</p></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="value-card"><i class="fas fa-shield-alt"></i><h5 class="fw-bold">Trust & Safety</h5><p class="text-muted small">Verified partners, secure payments, and 24/7 emergency support.</p></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="value-card"><i class="fas fa-leaf"></i><h5 class="fw-bold">Eco-Conscious</h5><p class="text-muted small">Promoting sustainable stays and responsible travel practices.</p></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="value-card"><i class="fas fa-chalkboard-user"></i><h5 class="fw-bold">Expert Curation</h5><p class="text-muted small">Insider knowledge + handpicked experiences for authentic journeys.</p></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- WHY BUZZ TRIP (DETAILED FEATURE) -->
+<div class="container my-5">
+  <div class="row align-items-center g-5">
+    <div class="col-md-6">
+      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=500&fit=crop" class="img-fluid rounded-4 shadow" alt="travel experience">
+    </div>
+    <div class="col-md-6">
+      <span class="dual-tag"><i class="fas fa-smile"></i> Why choose us?</span>
+      <h2 class="fw-bold mt-3">More Than Just a Travel Agency</h2>
+      <div class="mt-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>End-to-end support</strong> – from visa to local transfers.</div>
+      <div class="mt-2"><i class="fas fa-check-circle text-success me-2"></i> <strong>Curated experiences</strong> – no cookie-cutter tours.</div>
+      <div class="mt-2"><i class="fas fa-check-circle text-success me-2"></i> <strong>Best price guarantee</strong> + flexible payment plans.</div>
+      <div class="mt-2"><i class="fas fa-check-circle text-success me-2"></i> <strong>24/7 on-trip assistance</strong> – we're just a call away.</div>
+      <div class="mt-4"><a href="index.html#packages" class="btn-hero-primary" style="background: var(--dark-blue); color:white; padding:12px 28px; border-radius:50px;">Explore Packages <i class="fas fa-arrow-right ms-2"></i></a></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER (SAME STYLE) -->
+<footer class="footer pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5"><h4 class="fw-bold"><i class="fas fa-globe-asia me-2" style="color:var(--sun-yellow)"></i>Buzz Trip</h4><p class="mt-2" style="color:#d9e2ef">Since 2015 — Your gateway to incredible domestic & international journeys. Honeymoon, corporate, cruises & more.</p><div class="mt-3"><a href="#" class="me-3"><i class="fab fa-instagram fa-lg"></i></a><a href="#" class="me-3"><i class="fab fa-facebook fa-lg"></i></a><a href="#" class="me-3"><i class="fab fa-youtube fa-lg"></i></a></div></div>
+      <div class="col-md-3"><h5 class="fw-bold">Quick Links</h5><ul class="list-unstyled"><li><a href="index.html#packages">Domestic Packages</a></li><li><a href="index.html#packages">International Tours</a></li><li><a href="#">Group Bookings</a></li><li><a href="#">Honeymoon Specials</a></li></ul></div>
+      <div class="col-md-4"><h5 class="fw-bold">Get in Touch</h5><p><i class="fas fa-phone-alt me-2"></i> +91 92176 64273</p><p><i class="fab fa-instagram me-2"></i> buzz_trips</p><p><i class="fas fa-envelope me-2"></i> Buzztrips@outlook.com</p></div>
+    </div>
+    <hr class="mt-4 opacity-25">
+    <div class="text-center small pt-2">© 2026 Buzz Trip — Crafting Memories Since 2015</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // smooth internal links for same page (if any)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Buzz Trip | Domestic & International Travels since 2015</title>
+  <!-- Bootstrap 5 CSS + Icons + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Swiper JS CSS for trending slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== FLOATING CALL & WHATSAPP ===== */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      z-index: 9999;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* LEFT - CALL */
+    .call-btn {
+      left: 20px;
+      background: var(--ocean-blue);
+    }
+
+    /* RIGHT - WHATSAPP */
+    .whatsapp-btn {
+      right: 20px;
+      background: #25D366; /* official WhatsApp green */
+    }
+
+    :root {
+      --dark-blue: #083F85;
+      --ocean-blue: #0976C3;
+      --light-blue: #5193B6;
+      --sun-yellow: #FCD43C;
+      --soft-sky: #A5C7D6;
+      --white-bg: #FDFDFC;
+      --shadow-sm: 0 12px 28px rgba(8, 63, 133, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    /* LOGO FIX */
+    .logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    }
+
+    /* NAVBAR SPACING FIX */
+    .navbar-nav {
+    gap: 18px;
+    }
+
+    .nav-link {
+    padding: 8px 12px !important;
+    font-size: 15px;
+    }
+
+    .navbar .btn {
+    margin-left: 15px;
+    }
+
+    .navbar {
+    padding: 10px 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white-bg);
+      color: var(--dark-blue);
+      overflow-x: hidden;
+    }
+
+    /* ----- TOP HEADER ----- */
+    .top-header {
+      background-color: var(--dark-blue);
+      color: white;
+      font-size: 0.9rem;
+      padding: 8px 0;
+      position: relative;
+      z-index: 1030;
+    }
+    .top-header a {
+      color: var(--sun-yellow);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    .top-header a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    .top-header .social-icons i {
+      font-size: 1rem;
+      margin-right: 6px;
+      color: var(--sun-yellow);
+    }
+    .top-header .contact-details span {
+      margin-right: 24px;
+    }
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+      padding: 12px 0;
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--dark-blue) 30%, var(--ocean-blue) 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand i {
+      color: var(--sun-yellow);
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      font-size: 1.8rem;
+    }
+    .nav-link, .dropdown-item {
+      font-weight: 600;
+      color: var(--dark-blue) !important;
+      transition: var(--transition);
+    }
+    .nav-link:hover, .dropdown-item:hover {
+      color: var(--ocean-blue) !important;
+    }
+    .btn-outline-special {
+      border: 2px solid var(--ocean-blue);
+      color: var(--ocean-blue);
+      border-radius: 40px;
+      font-weight: 600;
+      padding: 6px 20px;
+      transition: var(--transition);
+    }
+    .btn-outline-special:hover {
+      background-color: var(--ocean-blue);
+      color: white;
+      border-color: var(--ocean-blue);
+    }
+
+    /* ----- HERO CAROUSEL ----- */
+    .hero-carousel {
+      position: relative;
+      height: 80vh;
+      min-height: 650px;
+      width: 100%;
+    }
+    .hero-carousel .carousel-inner,
+    .hero-carousel .carousel-item {
+      height: 100%;
+    }
+    .hero-carousel .carousel-item {
+      background-size: cover;
+      background-position: center 30%;
+      position: relative;
+      transition: transform 0.6s ease-in-out;
+    }
+    .hero-carousel .carousel-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, rgba(8,63,133,0.75) 0%, rgba(9,118,195,0.5) 100%);
+      z-index: 1;
+    }
+    .hero-carousel .carousel-item::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(0,0,0,0.2) 0%, rgba(8,63,133,0.3) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 3;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-text-block {
+      max-width: 680px;
+      animation: fadeUp 0.8s ease-out;
+    }
+
+    .hero-text-block .pre-title {
+      font-size: 1rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--sun-yellow);
+      background: rgba(8,63,133,0.4);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 40px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-text-block h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.2);
+    }
+
+    .hero-text-block h1 span {
+      color: var(--sun-yellow);
+      display: inline-block;
+    }
+
+    .hero-text-block .hero-description {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 2rem;
+      max-width: 540px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .hero-buttons-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-primary {
+      background: var(--sun-yellow);
+      color: var(--dark-blue);
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      border: none;
+    }
+
+    .btn-hero-primary:hover {
+      background: white;
+      color: var(--dark-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 28px rgba(0,0,0,0.15);
+    }
+
+    .btn-hero-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-hero-outline:hover {
+      background: white;
+      color: var(--dark-blue);
+      border-color: white;
+    }
+
+    .hero-carousel .carousel-control-prev,
+    .hero-carousel .carousel-control-next {
+      width: 5%;
+      opacity: 0.7;
+      transition: 0.2s;
+      z-index: 10;
+    }
+    .hero-carousel .carousel-control-prev:hover,
+    .hero-carousel .carousel-control-next:hover {
+      opacity: 1;
+    }
+    .hero-carousel .carousel-control-prev-icon,
+    .hero-carousel .carousel-control-next-icon {
+      background-color: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      padding: 1.2rem;
+      background-size: 50%;
+    }
+    .hero-carousel .carousel-indicators {
+      bottom: 30px;
+      z-index: 15;
+    }
+    .hero-carousel .carousel-indicators button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 6px;
+      background-color: rgba(255,255,255,0.5);
+      transition: 0.2s;
+    }
+    .hero-carousel .carousel-indicators button.active {
+      background-color: var(--sun-yellow);
+      transform: scale(1.2);
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-text-block h1 {
+        font-size: 3.2rem;
+      }
+      .hero-text-block .hero-description {
+        font-size: 1rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .hero-text-block h1 {
+        font-size: 2.4rem;
+      }
+      .hero-buttons-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-hero-primary, .btn-hero-outline {
+        text-align: center;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* About Buzz Trip Section */
+    .about-buzz {
+      background: linear-gradient(115deg, #F5F9FF 0%, #ffffff 100%);
+      border-radius: 48px;
+      margin: 2rem 0;
+      padding: 2rem 0;
+    }
+    .service-badge {
+      background: white;
+      border-radius: 80px;
+      padding: 12px 16px;
+      box-shadow: 0 6px 14px rgba(8,63,133,0.05);
+      transition: all 0.25s;
+      border: 1px solid rgba(9,118,195,0.15);
+      font-weight: 600;
+      gap: 12px;
+    }
+    .service-badge i {
+      font-size: 1.6rem;
+      color: var(--ocean-blue);
+      min-width: 32px;
+      text-align: center;
+    }
+    .service-badge span {
+      font-weight: 600;
+      color: var(--dark-blue);
+    }
+    .service-badge:hover {
+      transform: translateY(-3px);
+      border-color: var(--sun-yellow);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+    }
+    .about-stats .stat-number {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--dark-blue);
+      line-height: 1.2;
+    }
+    .dual-tag {
+      background: linear-gradient(120deg, var(--light-blue), var(--soft-sky));
+      border-radius: 60px;
+      padding: 4px 16px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    /* trending slider + other sections */
+    .trending-slider {
+      background: #F8FAFE;
+      border-radius: 48px;
+      padding: 2rem 0;
+      margin: 2rem 0;
+      overflow: visible;
+    }
+    .swiper-slide-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .swiper-slide-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px rgba(8,63,133,0.12);
+    }
+    .swiper-slide-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+    .card-info {
+      padding: 1rem 1rem 1.2rem;
+    }
+    .card-info h5 {
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+    .card-info .price {
+      color: var(--ocean-blue);
+      font-weight: 800;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      color: #083F85;
+      transition: 0.3s;
+    }
+    .swiper-pagination {
+      margin-top: 20px;
+      position: relative;
+    }
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: #ccc;
+      opacity: 1;
+      transition: 0.3s;
+    }
+    .swiper-pagination-bullet-active {
+      background: #FCD43C;
+      width: 22px;
+      border-radius: 10px;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .swiper-button-prev {
+      left: -60px;
+    }
+    .swiper-button-next {
+      right: -60px;
+    }
+    @media (max-width: 768px) {
+      .swiper-button-prev {
+        left: 10px;
+      }
+      .swiper-button-next {
+        right: 10px;
+      }
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background: #FCD43C;
+      color: #083F85;
+      transform: scale(1.1);
+    }
+    .section-title {
+      font-weight: 800;
+      font-size: 2.4rem;
+      color: var(--dark-blue);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--sun-yellow);
+      border-radius: 4px;
+    }
+    .package-card {
+      border: none;
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      height: 100%;
+    }
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px rgba(8, 63, 133, 0.12);
+    }
+    .card-img-top {
+      height: 220px;
+      object-fit: cover;
+    }
+    .price-badge {
+      background-color: var(--sun-yellow);
+      color: var(--dark-blue);
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 1rem;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .btn-book {
+      background-color: var(--ocean-blue);
+      color: white;
+      border-radius: 40px;
+      font-weight: 600;
+      padding: 8px 20px;
+      transition: var(--transition);
+      border: none;
+      width: 100%;
+    }
+    .btn-book:hover {
+      background-color: var(--dark-blue);
+    }
+    .footer {
+      background-color: #083F85;
+      color: #eef2f8;
+    }
+    .footer a {
+      color: var(--soft-sky);
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--sun-yellow);
+    }
+    .newsletter-area {
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--ocean-blue) 100%);
+      border-radius: 40px;
+      padding: 50px 30px;
+    }
+    .btn-subscribe {
+      background: var(--sun-yellow);
+      color: var(--dark-blue);
+      font-weight: 700;
+      border-radius: 60px;
+      padding: 12px 30px;
+    }
+    .feature-icon i {
+      font-size: 2.8rem;
+      color: var(--ocean-blue);
+      margin-bottom: 1rem;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
+    }
+
+    /* ===== NEW ABOUT SECTION ===== */
+.about-modern {
+  background: linear-gradient(135deg, #f8fbff, #ffffff);
+  border-radius: 40px;
+}
+
+.mini-feature {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.about-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: 0.3s;
+}
+
+.about-card.big {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #083F85, #0976C3);
+  color: white;
+}
+
+.about-card h3 {
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-card.big {
+    grid-column: span 1;
+  }
+
+  .mini-feature {
+    font-size: 13px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- CALL BUTTON (LEFT) -->
+<a href="tel:+919217668273" class="floating-btn call-btn">
+ <i class="fa-solid fa-phone"></i>
+</a>
+
+<!-- WHATSAPP BUTTON (RIGHT) -->
+<a href="https://wa.me/919217668273" target="_blank" class="floating-btn whatsapp-btn">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- TOP HEADER -->
+<div class="top-header">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <div class="contact-details">
+        <span><i class="fas fa-phone-alt me-1"></i> +91 92176 68273</span>
+        <span><i class="fab fa-whatsapp me-1"></i> +91 92176 64273</span>
+      </div>
+      <div class="social-icons">
+        <a target="_blank" href="https://www.instagram.com/buzz_trips?igsh=ODFxdjBwcGpmdGhy" class="me-3"><i class="fab fa-instagram me-1"></i> buzz_trips</a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN NAVIGATION -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="images/logo.png" alt="Buzz Trip logo" class="logo-img" onerror="this.src='https://placehold.co/200x60?text=Buzz+Trip';">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="domestic.html">Domestic</a></li>
+        <li class="nav-item"><a class="nav-link active" href="international.html">International</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-outline-special ms-2" href="tel:+919217668273">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO SECTION (CAROUSEL) ========== -->
+<div id="heroMainCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroMainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#heroMainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#heroMainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#heroMainCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80');">
+      <div class="hero-container px-4 px-md-0">
+        <div class="hero-text-block">
+          <div class="pre-title">ANDAMAN ESCAPE</div>
+          <h1>Explore <span>Andaman Islands</span><br>With Buzz Trips</h1>
+          <p class="hero-description">Crystal-clear waters, white sand beaches & unforgettable sunsets. Perfect for honeymoon & family trips.</p>
+          <div class="hero-buttons-group">
+            <a href="#packages" class="btn-hero-primary">View Andaman Packages <i class="fas fa-arrow-right"></i></a>
+            <a href="tel:+919217668273" class="btn-hero-outline">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" style="background-image: url('images/cc2.jpg');">
+      <div class="hero-container px-4 px-md-0">
+        <div class="hero-text-block">
+          <div class="pre-title">MANALI ADVENTURE</div>
+          <h1>Experience <span>Manali Snow</span><br>Like Never Before</h1>
+          <p class="hero-description">Snow mountains, Solang Valley adventures & cozy stays. Ideal for couples & thrill seekers.</p>
+          <div class="hero-buttons-group">
+            <a href="#packages" class="btn-hero-primary">Explore Manali Trips <i class="fas fa-arrow-right"></i></a>
+            <a href="tel:+919217668273" class="btn-hero-outline">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" style="background-image: url('images/cc3.jpg');">
+      <div class="hero-container px-4 px-md-0">
+        <div class="hero-text-block">
+          <div class="pre-title">BALI GETAWAY</div>
+          <h1>Discover <span>Bali Paradise</span><br>Luxury & Culture</h1>
+          <p class="hero-description">Private villas, beach clubs, waterfalls & iconic temples. Perfect international escape.</p>
+          <div class="hero-buttons-group">
+            <a href="#packages" class="btn-hero-primary">Explore Bali Packages <i class="fas fa-arrow-right"></i></a>
+            <a href="tel:+919217668273" class="btn-hero-outline">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" style="background-image: url('images/cc4.jpg');">
+      <div class="hero-container px-4 px-md-0">
+        <div class="hero-text-block">
+          <div class="pre-title">SINGAPORE CITY LIFE</div>
+          <h1>Explore <span>Singapore</span><br>Luxury & Fun</h1>
+          <p class="hero-description">Universal Studios, Marina Bay Sands & night safari. Perfect blend of adventure & nightlife.</p>
+          <div class="hero-buttons-group">
+            <a href="#packages" class="btn-hero-primary">View Singapore Tours <i class="fas fa-arrow-right"></i></a>
+            <a href="tel:+919217668273" class="btn-hero-outline">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroMainCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroMainCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- ========== NEW MODERN ABOUT SECTION ========== -->
+<section class="about-modern py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- LEFT CONTENT -->
+      <div class="col-lg-6">
+        <span class="dual-tag mb-3"><i class="fas fa-star me-1"></i> Since 2015</span>
+
+        <h2 class="fw-bold mb-3 section-title">
+          Travel Beyond Limits with <span style="color: var(--sun-yellow); font-weight:800;">Buzz Trip</span>
+        </h2>
+
+        <p class="text-muted">
+          From <strong>budget trips to luxury escapes</strong>, we design experiences that match your vibe.
+          Whether it's <strong>honeymoon, family vacation, or corporate travel</strong> — we handle everything.
+        </p>
+
+        <!-- FEATURES -->
+        <div class="row mt-4 g-3">
+          <div class="col-6">
+            <div class="mini-feature">
+              ✈️ Flights & Hotels
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mini-feature">
+              🌍 International Tours
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mini-feature">
+              🏝️ Domestic Packages
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mini-feature">
+              💑 Honeymoon Special
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+       
+      </div>
+
+      <!-- RIGHT SIDE CARDS -->
+      <div class="col-lg-6">
+        <div class="about-cards">
+
+          <div class="about-card big">
+            <h3>10K+</h3>
+            <p>Happy Travelers</p>
+          </div>
+
+          <div class="about-card">
+            <h3>50+</h3>
+            <p>Destinations</p>
+          </div>
+
+          <div class="about-card">
+            <h3>24/7</h3>
+            <p>Support</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRENDING CARD SLIDER ========== -->
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap">
+    <div>
+      <div><span class="dual-tag"><i class="fas fa-chart-line"></i> Trending Now</span></div>
+      <h2 class="section-title mt-2">Explore Most Wanted</h2>
+    </div>
+  </div>
+</div>
+<div class="trending-slider mb-5">
+  <div class="container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+  <div class="swiper-slide">
+    <div class="swiper-slide-card">
+      <img src="images/cc3.jpg">
+      <div class="card-info">
+        <h5>🌴 Bali Package</h5>
+        <p class="price">Starting @ ₹45,000/-</p>
+        <ul class="package-list">
+          <li>✔ 5D/4N Hotel Stay</li>
+          <li>✔ Private Villa + Pool</li>
+          <li>✔ Airport Transfers</li>
+        </ul>
+        <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="swiper-slide-card">
+      <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&h=300&fit=crop">
+      <div class="card-info">
+        <h5>🐘 Thailand Package</h5>
+        <p class="price">Starting @ ₹40,000/-</p>
+        <ul class="package-list">
+          <li>✔ Bangkok + Pattaya</li>
+          <li>✔ Phi Phi Island Tour</li>
+          <li>✔ Hotel + Breakfast</li>
+        </ul>
+        <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="swiper-slide-card">
+      <img src="images/cc4.jpg">
+      <div class="card-info">
+        <h5>🦁 Singapore Package</h5>
+        <p class="price">Starting @ ₹45,000/-</p>
+        <ul class="package-list">
+          <li>✔ Universal Studios</li>
+          <li>✔ Night Safari</li>
+          <li>✔ Hotel + Breakfast</li>
+        </ul>
+        <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="swiper-slide-card">
+      <img src="images/an1.jpeg">
+      <div class="card-info">
+        <h5>🏝️ Andaman Package</h5>
+        <p class="price">Starting @ ₹13,000/-</p>
+        <ul class="package-list">
+          <li>✔ Port Blair + Havelock</li>
+          <li>✔ Ferry Transfers</li>
+          <li>✔ Beach Tours</li>
+        </ul>
+        <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="swiper-slide-card">
+      <img src="images/m21.jpg">
+      <div class="card-info">
+        <h5>⛰️ Manali Package</h5>
+        <p class="price">Starting @ ₹6,999/-</p>
+        <ul class="package-list">
+          <li>✔ 3N/4D Stay</li>
+          <li>✔ Solang Valley Visit</li>
+          <li>✔ Local Sightseeing</li>
+        </ul>
+        <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED PACKAGES -->
+<section id="packages" class="container my-5 py-4">
+  <div class="text-center mb-5">
+    <div>
+      <span class="dual-tag"><i class="fas fa-globe-asia me-1"></i> Exclusive Offers</span>
+    </div>
+    <h2 class="section-title mt-3">Our Packages</h2>
+    <p class="text-muted mt-2">Handcrafted packages with best prices & inclusions</p>
+  </div>
+
+  <h4 class="mb-4 fw-bold text-center">🌍 International Packages</h4>
+  <div class="row g-4 mb-5">
+
+    <div class="col-md-6 col-lg-4">
+      <div class="package-card card h-100">
+        <img src="images/bali.jpg" class="card-img-top">
+        <div class="card-body">
+          <span class="price-badge">₹45,000/-</span>
+          <h5 class="card-title">🌴 Bali Tour Package</h5>
+          <ul class="list-unstyled">
+            <li>5 Days / 4 Nights</li>
+            <li>4★ Beach Resort + Breakfast</li>
+            <li>Sunset Dinner Cruise</li>
+          </ul>
+          <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="package-card card h-100">
+        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=400&fit=crop" class="card-img-top">
+        <div class="card-body">
+          <span class="price-badge">₹40,000/-</span>
+          <h5 class="card-title">🐘 Thailand Tour Package</h5>
+          <ul class="list-unstyled">
+            <li>6 Days / 5 Nights</li>
+            <li>Phi Phi Island Tour</li>
+            <li>Bangkok + Pattaya</li>
+          </ul>
+          <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="package-card card h-100">
+        <img src="images/singapore.jpg" class="card-img-top">
+        <div class="card-body">
+          <span class="price-badge">₹45,000/-</span>
+          <h5 class="card-title">🦁 Singapore Tour Package</h5>
+          <ul class="list-unstyled">
+            <li>4 Days / 3 Nights</li>
+            <li>Universal Studios Entry</li>
+            <li>Gardens by the Bay</li>
+          </ul>
+          <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h4 class="mb-4 fw-bold text-center">🇮🇳 Domestic Packages</h4>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+      <div class="package-card card h-100">
+        <img src="images/radhanagar.webp" class="card-img-top">
+        <div class="card-body">
+          <span class="price-badge">₹13,000/-</span>
+          <h5 class="card-title">🏝️ Andaman Tour Package</h5>
+          <ul class="list-unstyled">
+            <li>5 Days / 4 Nights</li>
+            <li>Havelock + Radhanagar Beach</li>
+            <li>Snorkeling Experience</li>
+          </ul>
+          <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="package-card card h-100">
+        <img src="images/m31.jpg" class="card-img-top">
+        <div class="card-body">
+          <span class="price-badge">₹6,999/-</span>
+          <h5 class="card-title">⛰️ Manali Tour Package</h5>
+          <ul class="list-unstyled">
+            <li>4 Days / 3 Nights</li>
+            <li>Solang Valley Snow Activities</li>
+            <li>Local Sightseeing</li>
+          </ul>
+          <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="package-card card h-100">
+        <img src="images/ladakh1.jpg" class="card-img-top">
+        <div class="card-body">
+          <span class="price-badge">₹18,999/-</span>
+          <h5 class="card-title">🏔️ Ladakh Tour Package</h5>
+          <ul class="list-unstyled">
+            <li>6 Days / 5 Nights</li>
+            <li>Pangong Lake + Nubra Valley</li>
+            <li>Leh Local Sightseeing</li>
+          </ul>
+          <a href="tel:+919217668273" class="text-decoration-none btn-book">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY CHOOSE US + TESTIMONIALS + NEWSLETTER -->
+<section class="container my-5 py-4">
+  <div class="text-center mb-5"><h2 class="section-title">Why Travel With Us?</h2><p class="text-secondary">Award-winning service & unforgettable moments</p></div>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="feature-card text-center p-4 bg-white rounded-4 shadow-sm h-100"><div class="feature-icon"><i class="fas fa-headset"></i></div><h5 class="fw-bold">24/7 Concierge</h5><p class="text-muted">Round-the-clock support for seamless journeys.</p></div></div>
+    <div class="col-md-4"><div class="feature-card text-center p-4 bg-white rounded-4 shadow-sm h-100"><div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div><h5 class="fw-bold">Best Price Guarantee</h5><p class="text-muted">Unbeatable deals & transparent pricing.</p></div></div>
+    <div class="col-md-4"><div class="feature-card text-center p-4 bg-white rounded-4 shadow-sm h-100"><div class="feature-icon"><i class="fas fa-passport"></i></div><h5 class="fw-bold">Visa & Flights Assistance</h5><p class="text-muted">End-to-end travel planning including visa.</p></div></div>
+  </div>
+</section>
+
+<section id="testimonials" class="container my-5 py-4">
+  <div class="text-center mb-5"><h2 class="section-title">Traveler's Joy</h2><p>What our wanderers say</p></div>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="testimonial-card"><i class="fas fa-quote-left fa-2x text-secondary opacity-50"></i><p class="mt-2 fw-medium">"Manali package was just ₹6999! Incredible value, cozy stays."</p><div class="d-flex align-items-center mt-3"><div><strong>Riya Sharma</strong><br><span class="text-muted small">Manali Explorer</span></div></div></div></div>
+    <div class="col-md-4"><div class="testimonial-card"><i class="fas fa-quote-left fa-2x text-secondary opacity-50"></i><p class="mt-2 fw-medium">"Bali trip was magical. Every detail arranged perfectly."</p><div class="d-flex align-items-center mt-3"><div><strong>Kunal Mehta</strong><br><span class="text-muted small">Bali Honeymoon</span></div></div></div></div>
+    <div class="col-md-4"><div class="testimonial-card"><i class="fas fa-quote-left fa-2x text-secondary opacity-50"></i><p class="mt-2 fw-medium">"Singapore package was superb! Universal Studios & Gardens by the Bay."</p><div class="d-flex align-items-center mt-3"><div><strong>Neha Verma</strong><br><span class="text-muted small">Family Vacation</span></div></div></div></div>
+  </div>
+</section>
+
+<section class="container my-5">
+  <div class="newsletter-area text-white text-center">
+    <h3 class="fw-bold">Get Exclusive Travel Deals</h3>
+    <p class="mb-4">Subscribe & receive ₹5000 off on your first international booking</p>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="input-group"><input type="email" class="form-control" placeholder="Your email address"><button class="btn btn-subscribe" type="button">Subscribe <i class="fas fa-paper-plane"></i></button></div>
+        <small class="d-block mt-2 opacity-75">No spam, only wanderlust inspiration</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5"><h4 class="fw-bold"><i class="fas fa-globe-asia me-2" style="color:var(--sun-yellow)"></i>Buzz Trip</h4><p class="mt-2" style="color:#d9e2ef">Since 2015 — Your gateway to incredible domestic & international journeys. Honeymoon, corporate, cruises & more.</p><div class="mt-3"><a href="#" class="me-3"><i class="fab fa-instagram fa-lg"></i></a><a href="#" class="me-3"><i class="fab fa-facebook fa-lg"></i></a><a href="#" class="me-3"><i class="fab fa-youtube fa-lg"></i></a></div></div>
+      <div class="col-md-3"><h5 class="fw-bold">Quick Links</h5><ul class="list-unstyled"><li><a href="#packages">Domestic Packages</a></li><li><a href="#packages">International Tours</a></li><li><a href="#">Group Bookings</a></li><li><a href="#">Honeymoon Specials</a></li></ul></div>
+      <div class="col-md-4"><h5 class="fw-bold">Get in Touch</h5><p><i class="fas fa-phone-alt me-2"></i> +91 92176 64273</p><p><i class="fab fa-instagram me-2"></i> buzz_trips</p><p><i class="fas fa-envelope me-2"></i> Buzztrips@outlook.com</p></div>
+    </div>
+    <hr class="mt-4 opacity-25">
+    <div class="text-center small pt-2">© 2026 Buzz Trip — Crafting Memories Since 2015</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: { delay: 3000, disableOnInteraction: false },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 }, 1280: { slidesPerView: 4 } }
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
